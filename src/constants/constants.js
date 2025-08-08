@@ -3,7 +3,7 @@ export const projects = [
     title: 'Chat Application',
     description: 'Flash is a versatile chat app that can be used for both professional and personal purposes. Its cutting edge features such as voice-to-text and customised user profile and ease of use make it very seamless for users.',
       image: '/images/1.png',
-      tags: ['Mongo', 'React', 'Node', 'Socket.io', 'Google OAuth', 'Open AI'],
+      tags: ['Mongo', 'React', 'Node', ' Web Sockets', 'Google OAuth', 'Open AI'],
     source: 'https://github.com/bhaveshg16/Flash-chat-app',
     visit: 'https://www.youtube.com/watch?v=Ova07NuKj2E',
     id: 0,
