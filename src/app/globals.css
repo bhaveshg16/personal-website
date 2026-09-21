@@ -22,5 +22,53 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Markdown rendered from content files on portfolio pages. */
+.prose-content {
+  @apply text-zinc-700 dark:text-zinc-300;
+}
+.prose-content p {
+  @apply my-3 leading-relaxed;
+}
+.prose-content ul {
+  @apply my-3 list-disc space-y-1.5 pl-5;
+}
+.prose-content strong {
+  @apply font-semibold text-zinc-900 dark:text-zinc-100;
+}
+.prose-content a {
+  @apply text-sky-600 hover:underline dark:text-sky-400;
+}
+.prose-content h1,
+.prose-content h2,
+.prose-content h3 {
+  @apply mb-2 mt-5 font-semibold text-zinc-900 dark:text-zinc-100;
+}
+.prose-content code {
+  @apply rounded bg-zinc-100 px-1 py-0.5 font-mono text-[0.85em] dark:bg-zinc-800;
+}
+
+/* Markdown inside chat bubbles (tighter spacing). */
+.prose-chat p {
+  @apply my-1.5 leading-relaxed;
+}
+.prose-chat ul {
+  @apply my-1.5 list-disc space-y-1 pl-4;
+}
+.prose-chat ol {
+  @apply my-1.5 list-decimal space-y-1 pl-4;
+}
+.prose-chat strong {
+  @apply font-semibold;
+}
+.prose-chat code {
+  @apply rounded bg-zinc-200 px-1 py-0.5 font-mono text-[0.85em] dark:bg-zinc-700;
+}
+.prose-chat > :first-child {
+  @apply mt-0;
+}
+.prose-chat > :last-child {
+  @apply mb-0;
 }
