@@ -3,7 +3,7 @@ id: exp-mykaarma
 title: Software Engineer — myKaarma
 company: myKaarma
 role: Software Engineer
-start: "2023"
+start: "June 2026"
 end: "Present"
 stack: [Java, Spring Boot, Kafka, MySQL, Redis, AWS, Kubernetes]
 order: 1

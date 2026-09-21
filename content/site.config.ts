@@ -6,14 +6,12 @@ export const siteConfig = {
   name: "Bhavesh Gupta",
   role: "Software Engineer",
   tagline:
-    "Backend engineer building communication and payment platforms for automotive dealerships.",
-  // TODO: replace with your personal email before going live (avoid work email on a public site)
-  email: "you@example.com",
+    "Software Engineer building solutions to whatever problem comes in mind",
+  email: "gupta.bhavesh.1602@gmail.com",
   location: "India",
   socials: {
-    // TODO: set your real GitHub/LinkedIn URLs
-    github: "https://github.com/your-username",
-    linkedin: "https://www.linkedin.com/in/your-handle",
+    github: "https://github.com/bhaveshg16",
+    linkedin: "https://www.linkedin.com/in/bhavesh-gupta-052951227/",
   },
 
   /**
@@ -21,7 +19,11 @@ export const siteConfig = {
    * Only repos listed here are fetched at build time and exposed to visitors.
    * Example: "your-username/cool-project"
    */
-  githubRepos: [] as string[],
+  githubRepos: [
+    "bhaveshg16/budget-manager",
+    "bhaveshg16/URL-shortener",
+    "bhaveshg16/Lending-Sapphire",
+  ] as string[],
 
   /** Starter questions shown as clickable chips in the chat. */
   suggestedQuestions: [
