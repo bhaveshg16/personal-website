@@ -21,3 +21,12 @@ Flexible — happy to discuss specifics directly.
 **What are his strongest technical areas?**
 Java/Spring Boot services, event-driven architectures with Kafka, and relational
 data modeling with MySQL.
+
+**What are his gaps or growth areas?**
+<!-- EDIT ME: your own honest, self-aware answer. Authoring this yourself keeps
+     the assistant credible when recruiters ask critical questions. -->
+He is early in his career, so his depth comes from recent hands-on production
+work rather than many years of scale. His documented experience centers on
+Java/Spring Boot backends and TypeScript/JavaScript projects — he has no
+documented production experience with Go, Rust, or ML systems. He compensates
+with fast ramp-up and end-to-end ownership of what he ships.
