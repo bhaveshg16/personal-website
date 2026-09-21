@@ -56,6 +56,12 @@ export async function POST(req: Request) {
     messages: await convertToModelMessages(messages.slice(-MAX_HISTORY_MESSAGES)),
     maxOutputTokens: 800,
     temperature: 0.3,
+    providerOptions: {
+      // Gemini 2.5 Flash "thinks" before answering by default, adding seconds
+      // of latency before the first token. Q&A over a small knowledge pack
+      // doesn't need it.
+      google: { thinkingConfig: { thinkingBudget: 0 } },
+    },
   });
 
   return result.toUIMessageStreamResponse({
