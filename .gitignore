@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated knowledge pack (rebuilt by scripts/ingest.ts)
+/src/generated/

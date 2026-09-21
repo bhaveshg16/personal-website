@@ -1,69 +1,91 @@
-import Image from "next/image";
+import Link from "next/link";
+import { getExperience, getProjects } from "@/lib/content";
+import { siteConfig } from "../../content/site.config";
 
-export default function Home() {
+export default function HomePage() {
+  const featured = getProjects().filter((p) => p.featured);
+  const latestRole = getExperience()[0];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="space-y-16">
+      <section className="pt-8">
+        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          Hi, I&apos;m {siteConfig.name.split(" ")[0]}.
+        </h1>
+        <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+          {siteConfig.tagline}
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link
+            href="/chat"
+            className="rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-sky-500"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            ✦ Ask my AI anything
+          </Link>
+          <Link
+            href="/projects"
+            className="rounded-xl border border-zinc-300 px-5 py-2.5 text-sm font-medium transition hover:border-zinc-400 dark:border-zinc-700 dark:hover:border-zinc-500"
           >
-            Documentation
-          </a>
+            View projects
+          </Link>
         </div>
-      </main>
+        <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-500">
+          Recruiters: skip the skimming — the AI assistant answers questions about
+          my experience and cites its sources.
+        </p>
+      </section>
+
+      {featured.length > 0 && (
+        <section>
+          <h2 className="mb-4 text-xl font-semibold">Featured projects</h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {featured.map((p) => (
+              <Link
+                key={p.id}
+                href={`/projects#${p.id}`}
+                className="rounded-2xl border border-zinc-200 p-5 transition hover:border-sky-500 dark:border-zinc-800"
+              >
+                <h3 className="font-semibold">{p.title}</h3>
+                <p className="mt-2 line-clamp-3 text-sm text-zinc-600 dark:text-zinc-400">
+                  {p.body.split("\n")[0]}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {p.stack.map((s) => (
+                    <span
+                      key={s}
+                      className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {latestRole && (
+        <section>
+          <h2 className="mb-4 text-xl font-semibold">Currently</h2>
+          <Link
+            href={`/experience#${latestRole.id}`}
+            className="block rounded-2xl border border-zinc-200 p-5 transition hover:border-sky-500 dark:border-zinc-800"
+          >
+            <div className="flex items-baseline justify-between gap-4">
+              <h3 className="font-semibold">
+                {latestRole.role} · {latestRole.company}
+              </h3>
+              <span className="text-sm text-zinc-500">
+                {latestRole.start} – {latestRole.end}
+              </span>
+            </div>
+            <p className="mt-2 line-clamp-2 text-sm text-zinc-600 dark:text-zinc-400">
+              {latestRole.body.split("\n")[0]}
+            </p>
+          </Link>
+        </section>
+      )}
     </div>
   );
 }
