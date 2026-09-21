@@ -22,7 +22,7 @@ function AssistantText({ text }: { text: string }) {
                 href={href}
                 target={href?.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
-                className="font-medium text-sky-600 no-underline hover:underline dark:text-sky-400"
+                className="font-medium text-orange-800 no-underline hover:underline"
               >
                 {children}
               </a>
@@ -33,14 +33,14 @@ function AssistantText({ text }: { text: string }) {
         </ReactMarkdown>
       </div>
       {sources.length > 0 && (
-        <div className="mt-2 flex flex-wrap gap-1.5">
+        <div className="mt-3 flex flex-wrap gap-1.5 border-t border-stone-100 pt-2.5">
           {sources.map((s) => (
             <a
               key={s.id}
               href={s.url}
               target={s.url.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
-              className="rounded-full border border-zinc-300 px-2 py-0.5 text-xs text-zinc-600 hover:border-sky-500 hover:text-sky-600 dark:border-zinc-700 dark:text-zinc-400 dark:hover:text-sky-400"
+              className="rounded-full bg-stone-100 px-2.5 py-0.5 text-xs text-stone-600 transition hover:bg-orange-100 hover:text-orange-900"
             >
               {s.n}. {s.title}
             </a>
@@ -65,20 +65,21 @@ export default function Chat({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div className="flex h-full flex-col">
-      <div className="flex-1 space-y-4 overflow-y-auto p-4">
+    <div className="flex h-full flex-col bg-white">
+      <div className="flex-1 space-y-4 overflow-y-auto p-5">
         {messages.length === 0 && (
           <div>
-            <p className="mb-3 text-sm text-zinc-500 dark:text-zinc-400">
+            <p className="mb-4 text-sm leading-relaxed text-stone-500">
               Ask me anything about {siteConfig.name}&apos;s work, skills, or
-              projects. Answers cite their sources.
+              projects — including the critical questions. Answers cite their
+              sources.
             </p>
             <div className="flex flex-wrap gap-2">
               {siteConfig.suggestedQuestions.map((q) => (
                 <button
                   key={q}
                   onClick={() => ask(q)}
-                  className="rounded-full border border-zinc-300 px-3 py-1.5 text-left text-sm text-zinc-700 transition hover:border-sky-500 hover:text-sky-600 dark:border-zinc-700 dark:text-zinc-300 dark:hover:text-sky-400"
+                  className="rounded-full border border-stone-300 bg-white px-3.5 py-1.5 text-left text-sm text-stone-700 transition hover:border-orange-700 hover:text-orange-900"
                 >
                   {q}
                 </button>
@@ -92,8 +93,8 @@ export default function Chat({ compact = false }: { compact?: boolean }) {
             <div
               className={
                 m.role === "user"
-                  ? "max-w-[85%] rounded-2xl rounded-br-sm bg-sky-600 px-4 py-2 text-sm text-white"
-                  : "max-w-[95%] rounded-2xl rounded-bl-sm bg-zinc-100 px-4 py-3 text-sm text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200"
+                  ? "max-w-[85%] rounded-2xl rounded-br-sm bg-stone-900 px-4 py-2.5 text-sm leading-relaxed text-stone-50"
+                  : "max-w-[95%] rounded-2xl rounded-bl-sm border border-stone-200 bg-[#faf7f2] px-4 py-3 text-sm leading-relaxed text-stone-800"
               }
             >
               {m.parts.map((part, i) =>
@@ -110,10 +111,10 @@ export default function Chat({ compact = false }: { compact?: boolean }) {
         ))}
 
         {status === "submitted" && (
-          <div className="px-4 text-sm text-zinc-400 dark:text-zinc-500">Thinking…</div>
+          <div className="px-1 text-sm text-stone-400">Thinking…</div>
         )}
         {error && (
-          <div className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
+          <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm text-amber-900">
             {error.message || "Something went wrong — please try again in a moment."}
           </div>
         )}
@@ -124,27 +125,27 @@ export default function Chat({ compact = false }: { compact?: boolean }) {
           e.preventDefault();
           ask(input);
         }}
-        className="flex gap-2 border-t border-zinc-200 p-3 dark:border-zinc-800"
+        className="flex gap-2 border-t border-stone-200 bg-white p-3"
       >
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           maxLength={1000}
           placeholder={`Ask about ${siteConfig.name.split(" ")[0]}…`}
-          className="flex-1 rounded-xl border border-zinc-300 bg-transparent px-3 py-2 text-sm outline-none placeholder:text-zinc-400 focus:border-sky-500 dark:border-zinc-700"
+          className="flex-1 rounded-full border border-stone-300 bg-white px-4 py-2 text-sm outline-none placeholder:text-stone-400 focus:border-stone-500"
           aria-label="Your question"
         />
         <button
           type="submit"
           disabled={busy || !input.trim()}
-          className="rounded-xl bg-sky-600 px-4 py-2 text-sm font-medium text-white transition disabled:opacity-40"
+          className="rounded-full bg-stone-900 px-5 py-2 text-sm font-medium text-stone-50 transition hover:bg-stone-700 disabled:opacity-40"
         >
           {busy ? "…" : "Send"}
         </button>
       </form>
 
       {!compact && (
-        <p className="px-3 pb-2 text-center text-xs text-zinc-400 dark:text-zinc-600">
+        <p className="bg-white px-3 pb-2.5 text-center text-xs text-stone-400">
           AI-generated from curated sources — answers link to their evidence.
         </p>
       )}

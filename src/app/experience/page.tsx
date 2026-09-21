@@ -7,24 +7,24 @@ export default function ExperiencePage() {
   const roles = getExperience();
   return (
     <div>
-      <h1 className="mb-8 text-3xl font-bold tracking-tight">Experience</h1>
-      <div className="space-y-10 border-l border-zinc-200 pl-6 dark:border-zinc-800">
+      <h1 className="mb-10 font-display text-4xl text-stone-900">Experience</h1>
+      <div className="space-y-12 border-l-2 border-stone-200 pl-7">
         {roles.map((r) => (
-          <article key={r.id} id={r.id} className="relative scroll-mt-20">
-            <span className="absolute -left-[1.85rem] top-1.5 h-3 w-3 rounded-full bg-sky-600" />
+          <article key={r.id} id={r.id} className="relative scroll-mt-24">
+            <span className="absolute -left-[2.28rem] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-[#faf7f2] bg-orange-700" />
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h2 className="text-xl font-semibold">
+              <h2 className="font-display text-xl text-stone-900">
                 {r.role} · {r.company}
               </h2>
-              <span className="text-sm text-zinc-500">
+              <span className="text-sm text-stone-500">
                 {r.start} – {r.end}
               </span>
             </div>
-            <div className="mt-2 flex flex-wrap gap-1.5">
+            <div className="mt-3 flex flex-wrap gap-1.5">
               {r.stack.map((s) => (
                 <span
                   key={s}
-                  className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"
+                  className="rounded-full bg-stone-100 px-2.5 py-0.5 text-xs text-stone-600"
                 >
                   {s}
                 </span>

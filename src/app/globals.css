@@ -1,53 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --background: #faf7f2; /* warm off-white paper */
+  --foreground: #292524; /* stone-800 ink */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+::selection {
+  background: #fde8d7;
 }
 
 /* Markdown rendered from content files on portfolio pages. */
 .prose-content {
-  @apply text-zinc-700 dark:text-zinc-300;
+  @apply text-stone-700;
 }
 .prose-content p {
   @apply my-3 leading-relaxed;
 }
 .prose-content ul {
-  @apply my-3 list-disc space-y-1.5 pl-5;
+  @apply my-3 list-disc space-y-1.5 pl-5 marker:text-stone-400;
 }
 .prose-content strong {
-  @apply font-semibold text-zinc-900 dark:text-zinc-100;
+  @apply font-semibold text-stone-900;
 }
 .prose-content a {
-  @apply text-sky-600 hover:underline dark:text-sky-400;
+  @apply text-orange-800 underline decoration-orange-300 underline-offset-2 hover:decoration-orange-800;
 }
 .prose-content h1,
 .prose-content h2,
 .prose-content h3 {
-  @apply mb-2 mt-5 font-semibold text-zinc-900 dark:text-zinc-100;
+  @apply mb-2 mt-5 font-semibold text-stone-900;
 }
 .prose-content code {
-  @apply rounded bg-zinc-100 px-1 py-0.5 font-mono text-[0.85em] dark:bg-zinc-800;
+  @apply rounded bg-stone-100 px-1 py-0.5 font-mono text-[0.85em];
 }
 
 /* Markdown inside chat bubbles (tighter spacing). */
@@ -55,7 +53,7 @@ body {
   @apply my-1.5 leading-relaxed;
 }
 .prose-chat ul {
-  @apply my-1.5 list-disc space-y-1 pl-4;
+  @apply my-1.5 list-disc space-y-1 pl-4 marker:text-stone-400;
 }
 .prose-chat ol {
   @apply my-1.5 list-decimal space-y-1 pl-4;
@@ -64,7 +62,7 @@ body {
   @apply font-semibold;
 }
 .prose-chat code {
-  @apply rounded bg-zinc-200 px-1 py-0.5 font-mono text-[0.85em] dark:bg-zinc-700;
+  @apply rounded bg-stone-100 px-1 py-0.5 font-mono text-[0.85em];
 }
 .prose-chat > :first-child {
   @apply mt-0;
